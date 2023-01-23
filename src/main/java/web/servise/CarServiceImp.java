@@ -1,6 +1,7 @@
-package web;
+package web.servise;
 
 import web.model.Car;
+import web.servise.CarService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,14 +22,7 @@ public class CarServiceImp implements CarService {
 
    @Override
     public List<Car> getListOfCars(List<Car> list, int a) {
-       List<Car> carList1 = new ArrayList<>();
-       if(0 < a && a < 6) {
-           for (int i = 0; i < a; i++) {
-               carList1.add(list.get(i));
-           }
+       List<Car> carList1 = list.stream().limit(a).toList();
            return carList1;
-       } else if(a>=6) {
-           return list;
-       } else return null;
     }
 }
